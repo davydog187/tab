@@ -1,23 +1,9 @@
 defmodule Tab do
-  @moduledoc """
-  Tab is a tiny library for converting Elixir terms into
-  tabular data.
-
-      iex> Tab.tabulate([%{a: 1, b: 2, c: 3}, %{a: 1, b: 2}])
-      [
-        ["a", "b", "c"],
-        [1, 2, 3],
-        [1, 2, nil]
-      ]
-
-  Tab also works with nested data
-
-      iex> Tab.tabulate([%{a: %{b: 1, c: 2}}])
-      [
-        ["a.b", "a.c"] ,
-        [1, 2]
-      ]
-  """
+  @external_resource "README.md"
+  @moduledoc @external_resource
+             |> File.read!()
+             |> String.split("<!-- MDOC !-->")
+             |> Enum.fetch!(1)
 
   def tabulate(data, opts \\ [])
 
