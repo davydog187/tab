@@ -5,6 +5,18 @@ defmodule Tab do
              |> String.split("<!-- MDOC !-->")
              |> Enum.fetch!(1)
 
+  @doc """
+  Converts a list of (mostly) homogeneous Elixir terms into
+  tabular data via the `Tab.Collapsible` protocol
+
+      iex> Tab.tabulate([%{a: 1, b: 2, c: 3}, %{a: 4}, %{b: 5}])
+      [
+        ["a", "b", "c"],
+        [1, 2, 3],
+        [4, nil, nil],
+        [nil, 5, nil],
+      ]
+  """
   def tabulate(data, opts \\ [])
 
   def tabulate(data, opts) when is_list(data) do
